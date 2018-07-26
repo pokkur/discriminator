@@ -1,6 +1,6 @@
 {
     "name": "discriminator",
-    "version": "0.9.9",
+    "version": "0.9.901",
     "description": "Discriminate enterprise version from github.",
     "content_scripts": [
         {
@@ -9,8 +9,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "content_script.js",
-                "color-picker.min.js"
+                "content_script.js"
             ]
         }
     ],

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const Box = document.querySelector('#color')
     const ColorInput = document.querySelector('#color input')
 
-    chrome.storage.local.get(null, function(result) {
+    chrome.storage.local.get(null, function (result) {
         // console.log(`Load ${result.colorSource}`)
 
         let themeColor = (result.colorSource != undefined)
@@ -26,20 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
             themeColor = event.currentTarget.value
             Box.classList.remove(`is-done`)
 
-            if(themeColor.length >= 6) {
+            if (themeColor.length >= 6) {
                 chrome.storage.local.set({
                     colorSource: themeColor
-                }, function() {
+                }, function () {
                     console.log(`Save a ${themeColor}`)
                 })
 
                 document.body.style.background = `#${themeColor}`
                 Box.style.color = ColorInput.style.color = BlackOrWhite(themeColor)
                 Box.classList.add(`is-done`)
+
                 chrome.tabs.reload()
             }
         }, {
-            capture: false
-        })
+                capture: false
+            })
     })
 })

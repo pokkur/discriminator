@@ -18,9 +18,10 @@ if (/github/.test(window.location.host) && window.location.host != `github.com`)
             return false
         }
 
-        const Canvas = document.createElement('canvas')
+        const Canvas = document.createElement(`canvas`)
         document.body.appendChild(Canvas)
-        const Ctx = Canvas.getContext('2d')
+        Canvas.style.display = `none`
+        const Ctx = Canvas.getContext(`2d`)
 
         Canvas.width = 16
         Canvas.height = 16
@@ -30,19 +31,19 @@ if (/github/.test(window.location.host) && window.location.host != `github.com`)
         Ctx.fillRect(0, 0, 16, 16)
 
         const Icon = new Image()
-        let imageSrc = chrome.runtime.getURL('favicon.png')
+        let imageSrc = chrome.runtime.getURL(`favicon.png`)
         Icon.onload = function() {
             Ctx.globalCompositeOperation = `destination-in`
             Ctx.drawImage(Icon, 0, 0, 16, 16)
             Bury()
         }
-        Icon.crossOrigin = 'anonymous'
+        Icon.crossOrigin = `anonymous`
         Icon.src = imageSrc
 
         const Bury = () => {
             const favipath = Canvas.toDataURL()
             const Favicon = document.querySelector(`.js-site-favicon`)
-            Favicon.setAttribute('href', favipath)
+            Favicon.setAttribute(`href`, favipath)
         }
     }
 }
