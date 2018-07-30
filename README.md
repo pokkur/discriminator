@@ -11,3 +11,4 @@
 ## next
 
 - [x] options page
+- [ ] color picker ui
